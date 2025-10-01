@@ -115,3 +115,21 @@ botaoPublicar.addEventListener("click", async (evento) => {
     }    
 })
 
+
+//Ao clicar no botão descartar o formulario deve ser limpo
+//
+
+const botaoDescartar = document.querySelector(".botao-descartar");
+
+botaoDescartar.addEventListener("click", (evento) => {
+    evento.preventDefault();
+
+    const formulario = document.querySelector("form");
+    formulario.reset();
+
+    imagemPrincipal.src = "./img/imagem1.png";
+    nomeDaImagem.textContent = "image_projeto.png";
+
+    listaTags.innerHTML = "";
+
+})
