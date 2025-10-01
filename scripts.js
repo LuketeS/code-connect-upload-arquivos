@@ -82,12 +82,22 @@ inputTags.addEventListener("keypress", async (evento) => {
     }
 })
 
-//selecionar o botão de publicar no formulario
 const botaoPublicar = document.querySelector(".botao-publicar");
 
-//detectar clique no botão
-//selecionar os campos de digitação do form 
-//selecionar as tags do projeto
+async function publicarProjeto(nomeProjeto, descricaoProjeto,tagsProjeto) {
+    return new Promise((resolve,reject) => {
+        setTimeout(() => {
+            const deuCerto = Math.random() > 0.5;
+
+            if (deuCerto) {
+                resolve("Projeto publicado com sucesso!")
+            } else {
+                reject("ERro ao publicar o projeto")
+            }
+        },2000)
+    })
+}
+
 botaoPublicar.addEventListener("click", async (evento) => {
     evento.preventDefault();
 
@@ -95,23 +105,13 @@ botaoPublicar.addEventListener("click", async (evento) => {
     const descricaoProjeto = document.getElementById("descricao").value;
     const tagsProjeto = Array.from(listaTags.querySelectorAll("p")).map((tag) => tag.textContent);
 
-    console.log(nomeProjeto)
-    console.log(descricaoProjeto)
-    console.log(tagsProjeto)
-});
-
-//criar função assincrona de publicar projeto 
-async function publicarProjeto(nomeProjeto, descricaoProjeto,tagsProjeto) {
-    return new Promise((resolve,reject) => {
-        setTimeout(() => {
-            const deuCerto = Math.random() > 0.5;
-
-            if (deuCerto) {
-                resolve("PRojeto publicado com sucesso!")
-            } else {
-                reject("ERro ao publicar o projeto")
-            }
-        },2000)
-    })
-}
+    try {
+        const resultado = await publicarProjeto(nomeProjeto, descricaoProjeto, tagsProjeto);
+        console.log(resultado);
+        alert("Deu tudo certo!");
+    } catch (error) {
+        console.log("Deu errado: ", error);
+        alert("Deu ruim!");
+    }    
+})
 
