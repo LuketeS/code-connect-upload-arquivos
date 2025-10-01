@@ -92,10 +92,20 @@ async function publicarProjeto(nomeProjeto, descricaoProjeto,tagsProjeto) {
             if (deuCerto) {
                 resolve("Projeto publicado com sucesso!")
             } else {
-                reject("ERro ao publicar o projeto")
+                reject("Erro ao publicar o projeto")
             }
         },2000)
     })
+}
+
+function validarFormulario(nomeProjeto, descricaoProjeto, tagsProjeto){
+        if (nomeProjeto === "" || descricaoProjeto === ""){
+            alert("Você não digitou um nome de projeto!")
+            throw new Error('Por favor, preencha todos os campos obrigatórios (nome e descrição).');
+        }else if (tagsProjeto == "") {
+            alert("Digite pelo menos uma Tag!")
+            throw new Error('Adicione pelo menos uma tag ao projeto.');
+        }
 }
 
 botaoPublicar.addEventListener("click", async (evento) => {
@@ -106,18 +116,18 @@ botaoPublicar.addEventListener("click", async (evento) => {
     const tagsProjeto = Array.from(listaTags.querySelectorAll("p")).map((tag) => tag.textContent);
 
     try {
+        validarFormulario(nomeProjeto, descricaoProjeto, tagsProjeto);
+
         const resultado = await publicarProjeto(nomeProjeto, descricaoProjeto, tagsProjeto);
+
         console.log(resultado);
-        alert("Deu tudo certo!");
+        alert("Deu tudo certo!");            
+
     } catch (error) {
         console.log("Deu errado: ", error);
         alert("Deu ruim!");
     }    
 })
-
-
-//Ao clicar no botão descartar o formulario deve ser limpo
-//
 
 const botaoDescartar = document.querySelector(".botao-descartar");
 
