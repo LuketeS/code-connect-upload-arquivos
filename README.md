@@ -1,6 +1,6 @@
 # 🚀 Projeto de JavaScript Assíncrono - CodeConnect
 
-Bem-vindo(a)! Este repositório faz parte do curso de **JavaScript Assíncrono**, ministrado por *Mônica Hillman*.  
+Bem-vindo(a)! Este repositório foi feito durante o curso de **JavaScript Assíncrono**, da Alura e ministrado por *Mônica Hillman*.  
 Aqui você encontrará o projeto prático desenvolvido ao longo das aulas.
 
 ---
